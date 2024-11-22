@@ -2,10 +2,10 @@
 
 En este proyecto se crea un counter y un gestor de usuario simple para aprender a gestionar los estados de estas 2 funcionalidades e implementar arquitectura BLoC con gestion de bases de datos, para entender como funciona, todo esto con la ayuda de la libreria flutter_bloc.
 
-![Screen Counter](assets\1.png)
-![Screen Counter](assets\2.png)
-![Screen Counter](assets\3.png)
-![Screen Counter](assets\4.png)
+![Screen Counter](/assets/1.png)
+![Screen Counter](/assets/2.png)
+![Screen Counter](/assets/3.png)
+![Screen Counter](/assets/4.png)
 
 ## Temas clave
 
