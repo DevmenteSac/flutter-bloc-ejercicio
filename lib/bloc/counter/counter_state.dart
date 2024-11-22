@@ -1,5 +1,6 @@
 part of 'counter_bloc.dart';
 
+// Diferentes estados(atributos)
 @immutable
 sealed class CounterState {
   final int counter;

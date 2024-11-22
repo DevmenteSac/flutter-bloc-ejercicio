@@ -1,5 +1,6 @@
 part of 'user_bloc.dart';
 
+// Diferentes estados(atributos)
 @immutable
 sealed class UserState {}
 

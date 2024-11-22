@@ -19,17 +19,21 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
       ),
+      // En UI se usan Builders o Listeners para cada BLoC
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // BlocBuilder para UserBloc
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
+                // En el Switch se decide que recontruir dependiendo del estado
                 switch (state) {
                   case UserInitial():
                     return const Text("Agrega un Usuario");
 
                   case UserLoaded():
+                    // Se puede acceder a los atributos de cada estado, dependiendo del estado
                     return Column(
                       children: [
                         Text("Hola ${state.userModel.name}"),
@@ -48,7 +52,9 @@ class MyHomePage extends StatelessWidget {
                 }
               },
             ),
+
             const SizedBox(height: 20),
+
             // BlocConsumer sirve como Listener(ejecutar acciones) y Builder(reconstruir UI)
             BlocConsumer<CounterBloc, CounterState>(
               // para ejecutar acciones
@@ -58,6 +64,7 @@ class MyHomePage extends StatelessWidget {
                     SnackBar(
                       backgroundColor: Colors.redAccent,
                       content: Text(state.message),
+                      duration: const Duration(seconds: 1),
                     ),
                   );
                 }
@@ -68,12 +75,15 @@ class MyHomePage extends StatelessWidget {
                 switch (state) {
                   case CounterInitial():
                     return const Text("Push + Button to Start");
+
                   case CounterValue():
                     return Text(
                         "You have pushed the button ${state.counter} times");
+
                   case CounterLimitReached():
                     return Text(
                         "You have pushed the button ${state.counter} times");
+
                   case CounterLoading():
                     return const CircularProgressIndicator.adaptive();
 
@@ -90,7 +100,7 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           FloatingActionButton(
-            // para mandar eventos al BLoC
+            // para mandar eventos al BLoC de CounterBloc
             onPressed: () {
               context.read<CounterBloc>().add(CounterIncrementPressed());
             },
@@ -119,6 +129,7 @@ class MyHomePage extends StatelessWidget {
               UserModel? user = await showInputDialog(context);
 
               if (user != null) {
+                // para mandar eventos al BLoC de UserBloc
                 context.read<UserBloc>().add(EditEvent(newUser: user));
               }
             },

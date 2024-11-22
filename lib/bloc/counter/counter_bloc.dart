@@ -14,6 +14,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     // Se define el tipo de evento que recibe y el tipo de estado que emite
     on<CounterIncrementPressed>(
       (CounterIncrementPressed event, Emitter<CounterState> emit) {
+        // aca dentro va la logica
         emit(CounterValue(counter: state.counter + 1));
       },
     );

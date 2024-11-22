@@ -1,5 +1,6 @@
 part of 'counter_bloc.dart';
 
+// Diferentes eventos(metodos)
 @immutable
 sealed class CounterEvent {}
 
