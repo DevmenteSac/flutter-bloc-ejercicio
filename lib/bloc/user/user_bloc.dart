@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'user_event.dart';
 part 'user_state.dart';
 
+// Siempre empezar con estados efimeros y luego probar con bases de datos
 class UserBloc extends Bloc<UserEvent, UserState> {
   // Se necesita del repositorio para api o bbdd
   final UserRepository userRepository;
@@ -20,7 +21,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         // usamos el estaado del evento para agregar nuevo usuario
         UserModel user = event.newUser;
 
-        userRepository.updateUser(user);
+        await userRepository.updateUser(user);
 
         emit(UserLoaded(userModel: user));
       } catch (error) {

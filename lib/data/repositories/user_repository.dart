@@ -15,6 +15,6 @@ class UserRepository {
   }
 
   Future<void> updateUser(UserModel user) async {
-    _userShared.saveUser(user);
+    return await _userShared.saveUser(user);
   }
 }
